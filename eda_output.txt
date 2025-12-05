@@ -1,0 +1,196 @@
+﻿================================================================================
+K-LEAGUE PASS PREDICTION - DATA EXPLORATION
+================================================================================
+
+[1] Loading datasets...
+[OK] Train data: 356,721 rows x 15 columns
+[OK] Test data: 2,414 episodes
+[OK] Match info: 228 matches
+[OK] Sample submission: 2,414 predictions needed
+
+[2] Analyzing data structure...
+
+--- Column Information ---
+game_id           int64
+period_id         int64
+episode_id        int64
+time_seconds    float64
+team_id           int64
+player_id         int64
+action_id         int64
+type_name        object
+result_name      object
+start_x         float64
+start_y         float64
+end_x           float64
+end_y           float64
+is_home            bool
+game_episode     object
+dtype: object
+
+--- Missing Values ---
+             Missing Count  Percentage
+result_name         140254       39.32
+
+--- Basic Statistics ---
+Unique games: 198
+Unique episodes: 15435
+Unique teams: 12
+Unique players: 446
+Unique action types: 26
+
+[3] Analyzing episode structure...
+
+Sequence Length Statistics:
+  Mean: 23.11
+  Median: 16
+  Min: 1
+  Max: 270
+  Std: 21.99
+[OK] Saved: eda_outputs\episode_lengths.png
+
+[4] Analyzing action types...
+
+Action Type Distribution:
+type_name
+Pass                178582
+Carry                82046
+Recovery             27352
+Interception         11088
+Duel                  8734
+Tackle                8138
+Throw-In              6801
+Clearance             6563
+Intervention          6038
+Block                 3983
+Pass_Freekick         3824
+Cross                 3589
+Goal Kick             2713
+Error                 1647
+Shot                  1413
+Pass_Corner           1137
+Catch                 1019
+Take-On                987
+Aerial Clearance       478
+Parry                  373
+Hit                    130
+Shot_Freekick           43
+Foul                    26
+Deflection              14
+Penalty Kick             2
+Handball_Foul            1
+Name: count, dtype: int64
+[OK] Saved: eda_outputs\action_types.png
+
+[5] Analyzing coordinate distributions...
+
+Field dimensions: 105 × 68
+
+--- Start Coordinates ---
+X range: [0.00, 105.00]
+Y range: [0.00, 68.00]
+
+--- End Coordinates (Target) ---
+X range: [0.00, 105.00]
+Y range: [0.00, 68.00]
+[OK] Saved: eda_outputs\coordinate_distributions.png
+
+[6] Creating spatial heatmaps...
+[OK] Saved: eda_outputs\position_heatmaps.png
+
+[7] Analyzing temporal patterns...
+
+Time Statistics:
+  Min time: 0.00s
+  Max time: 3614.47s
+  Mean time: 1473.11s
+
+Period Distribution:
+period_id
+1    178714
+2    178007
+Name: count, dtype: int64
+[OK] Saved: eda_outputs\temporal_analysis.png
+
+[8] Analyzing pass distances...
+
+Pass Distance Statistics:
+  Mean: 12.55
+  Median: 10.15
+  Min: 0.00
+  Max: 101.08
+  Std: 11.40
+[OK] Saved: eda_outputs\pass_distances.png
+
+[9] Analyzing home vs away patterns...
+
+Home vs Away Distribution:
+is_home
+True     179385
+False    177336
+python : Traceback (most recent call last):
+위치 줄:1 문자:1
++ python 01_data_exploration.py 2>&1 | Out-File -FilePath eda_output.tx ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\Playdata\Desktop\k_league\01_data_exploration.py", line 424, in <module>
+    json.dump(summary_stats, f, indent=2)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Playdata\miniconda3\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Playdata\miniconda3\Lib\json\encoder.py", line 433, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Playdata\miniconda3\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Playdata\miniconda3\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Playdata\miniconda3\Lib\json\encoder.py", line 440, in _iterencode
+    o = _default(o)
+  File "C:\Users\Playdata\miniconda3\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type int64 is not JSON serializable
+Name: count, dtype: int64
+[OK] Saved: eda_outputs\home_away_analysis.png
+
+[10] Analyzing result names...
+
+Result Name Distribution:
+result_name
+Successful          178537
+Unsuccessful         36446
+On Target              692
+Blocked                635
+Low Quality Shot        71
+Off Target              48
+Yellow_Card             26
+Keeper Rush-Out         12
+Name: count, dtype: int64
+[OK] Saved: eda_outputs\result_names.png
+
+[11] Analyzing correlations...
+[OK] Saved: eda_outputs\correlation_matrix.png
+
+[12] Examining sample episodes...
+
+Sample Episode: 126283_1
+Number of events: 49
+
+Sequence of events:
+   time_seconds type_name    start_x    start_y      end_x      end_y
+0         0.667      Pass  52.418205  33.485444  31.322445  38.274752
+1         3.667      Pass  32.013240  38.100808  37.371285  30.632980
+2         4.968     Carry  37.371285  30.632980  38.391570  24.613144
+3         8.200      Pass  38.391570  24.613144  34.573350   5.545468
+4        11.633      Pass  34.578705   6.058256  21.274470  18.437112
+5        13.201     Carry  21.274470  18.437112  28.862295  24.320336
+6        18.900      Pass  28.862295  24.320336  26.569410  35.190204
+7        19.968     Carry  26.569410  35.190204  35.039130  34.624580
+8        25.933      Pass  35.039130  34.624580  33.001500  18.885028
+9        29.767      Pass  35.220780  19.540344  35.104335  33.618112
+[OK] Saved: eda_outputs\sample_episode_trajectory.png
+
+[13] Exporting summary statistics...

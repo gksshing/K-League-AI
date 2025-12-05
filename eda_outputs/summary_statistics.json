@@ -1,0 +1,13 @@
+{
+  "Dataset Overview": {
+    "Total Events": 356721,
+    "Unique Games": 198,
+    "Unique Episodes": 15435,
+    "Unique Teams": 12,
+    "Unique Players": 446,
+    "Test Episodes": 2414
+  },
+  "Episode Statistics": {
+    "Mean Sequence Length": 23.111175898931002,
+    "Median Sequence Length": 16.0,
+    "Min Sequence Length": 

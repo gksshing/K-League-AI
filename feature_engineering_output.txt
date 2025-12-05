@@ -1,0 +1,50 @@
+﻿================================================================================
+K-LEAGUE PASS PREDICTION - FEATURE ENGINEERING
+================================================================================
+
+[1] Loading training data...
+[OK] Loaded 356,721 events
+
+[2] Creating spatial features...
+[OK] Created 30 spatial features
+
+[3] Creating temporal features...
+[OK] Created temporal features
+
+[4] Creating contextual features...
+[OK] Created contextual features
+
+[5] Creating team and player features...
+[OK] Created team and player features
+
+[6] Creating interaction features...
+[OK] Created interaction features
+
+[7] Creating advanced spatial features...
+[OK] Created advanced spatial features
+
+[8] Saving engineered features...
+[OK] Saved: processed_data\train_with_features.csv
+    Total features: 86
+    Total rows: 356,721
+[OK] Saved feature list: processed_data\feature_list.csv
+
+[9] Feature statistics summary...
+
+Spatial Features:
+  Count: 19
+
+Temporal Features:
+  Count: 13
+
+Contextual Features:
+  Count: 9
+
+Team/Player Features:
+  Count: 18
+
+================================================================================
+FEATURE ENGINEERING COMPLETE!
+Total features created: 86
+Output saved to: C:\Users\Playdata\Desktop\k_league\processed_data
+================================================================================

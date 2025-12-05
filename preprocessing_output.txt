@@ -1,0 +1,72 @@
+﻿================================================================================
+K-LEAGUE PASS PREDICTION - DATA PREPROCESSING
+================================================================================
+
+[1] Loading engineered features...
+[OK] Loaded 356,721 events with 86 features
+
+[2] Defining target and feature columns...
+[OK] Target columns: ['end_x', 'end_y']
+[OK] Feature columns: 73
+
+[3] Handling missing values...
+[WARNING] Found missing values in 1 features:
+  player_std_pass_dist: 1 (0.00%)
+[OK] Missing values handled
+
+[4] Creating episode-level dataset...
+[OK] Created targets for 15,435 episodes
+
+[5] Creating sequence-level aggregated features...
+[OK] Created 31 aggregated features
+[OK] Episode dataset shape: (15435, 34)
+
+[6] Creating train/validation split...
+[INFO] Total unique games: 198
+[OK] Train set: 12,389 episodes from 158 games
+[OK] Validation set: 3,046 episodes from 40 games
+
+[7] Scaling features...
+[OK] Scaled 31 features using RobustScaler
+
+[8] Saving processed data...
+[OK] Saved: processed_data\train_processed.csv
+[OK] Saved: processed_data\val_processed.csv
+[OK] Saved: processed_data\scaler.pkl
+[OK] Saved: processed_data\feature_info.pkl
+
+[9] Saving full sequence data...
+[OK] Saved: processed_data\sequence_data_full.csv
+    Shape: (356721, 87)
+
+[10] Summary statistics...
+
+Dataset Statistics:
+  Total episodes: 15,435
+  Training episodes: 12,389 (80.3%)
+  Validation episodes: 3,046 (19.7%)
+
+Target Statistics (Training Set):
+  Target X - Mean: 68.47, Std: 23.80
+  Target Y - Mean: 33.56, Std: 24.34
+
+Feature Statistics:
+  Total features: 31
+  Feature types: aggregated sequence features
+
+[11] Data quality checks...
+[WARNING] Found NaN values - Train: 42, Val: 0
+[OK] No infinite values in processed data
+
+Target Range Checks:
+  Train X range: [0.00, 105.00]
+  Train Y range: [0.00, 68.00]
+  Val X range: [0.00, 105.00]
+  Val Y range: [0.00, 68.00]
+
+================================================================================
+DATA PREPROCESSING COMPLETE!
+All outputs saved to: C:\Users\Playdata\Desktop\k_league\processed_data
+
+Ready for modeling!
+================================================================================
