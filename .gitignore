@@ -1,5 +1,1 @@
-*.csv
-*.pt
-*.h5
-dataset/
-models/
+processed_data/
